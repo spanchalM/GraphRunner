@@ -27,6 +27,8 @@ function Get-GraphTokens{
     .PARAMETER UserPasswordAuth
         
         Provide a username and password for authentication instead of using a device code auth.
+    .PARAMETER UserName
+    .PARAMETER Password
     
     .PARAMETER Client
         
@@ -95,8 +97,8 @@ function Get-GraphTokens{
 	}
     if($UserPasswordAuth){
         Write-Host -ForegroundColor Yellow "[*] Initiating the User/Password authentication flow"
-        $username = Read-Host -Prompt "Enter username"
-        $password = Read-Host -Prompt "Enter password" -AsSecureString
+        $username = $UserName
+	$password = $Password
 
         $passwordText = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password))
 
